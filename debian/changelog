@@ -1,0 +1,5 @@
+gst-rtsp-launch (0.0.1) unstable; urgency=medium
+
+  * Initial release
+
+ -- Alexey Rogachevskiy <sfalexrog@gmail.com>  Mon, 23 Dec 2019 12:12:30 +0300

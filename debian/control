@@ -1,0 +1,22 @@
+Source: gst-rtsp-launch
+Section: misc
+Priority: optional
+Maintainer: Alexey Rogachevskiy <sfalexrog@gmail.com>
+Build-Depends: cmake,
+               debhelper,
+               libgstrtspserver-1.0-dev,
+               ninja-build
+Standards-Version: 4.4.0
+Homepage: https://github.com/sfalexrog/gst-rtsp-launch
+Vcs-Git: https://github.com/sfalexrog/gst-rtsp-launch
+Vcs-Browser: https://github.com/sfalexrog/gst-rtsp-launch
+
+Package: gst-rtsp-launch
+Architecture: any
+Depends: libgstrtspserver-1.0-0,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Simple GStreamer-based RTSP server
+ A simple RTSP server that allows you to specify a pipeline
+ similar to gst-launch. The output of the pipeline will be sent to
+ the server (so the sink will be added automatically).
