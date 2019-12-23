@@ -35,16 +35,22 @@ find_path(_INCLUDE_GLIB glib.h
   /usr/include
   /usr/include/glib-2.0
 )
+# Terrible, terrible hack to find glibconfig (which is in /usr/lib/platform-triplet/glib-2.0/include, of all places!)
+if (_LIB_GLIB)
+  get_filename_component(_LIBDIR_GLIB ${_LIB_GLIB} DIRECTORY)
+else()
+  message(FATAL_ERROR "Could not find glib")
+endif()
+
 find_path(_INCLUDE_GLIBCONFIG glibconfig.h
   HINTS
   /usr/include
   /usr/include/glib-2.0
-  /usr/lib/x86_64-linux-gnu/glib-2.0/include
-  /usr/lib/arm-linux-gnueabi/glib-2.0/include
+  ${_LIBDIR_GLIB}/glib-2.0/include
 )
 
 message(STATUS "Using libgstrtspserver-1.0 from ${_LIB_GSTRTSP}")
-message(STATUS "Using libglib-2.0 from ${_LIBG_LIB}")
+message(STATUS "Using libglib-2.0 from ${_LIB_GLIB}")
 message(STATUS "Using header files from ${_INCLUDE_GSTRTSP}, ${_INCLUDE_GLIB}")
 
 if (NOT _LIB_GSTRTSP OR NOT _INCLUDE_GSTRTSP)
@@ -53,10 +59,6 @@ endif()
 
 if (NOT _INCLUDE_GLIB OR NOT _INCLUDE_GLIBCONFIG)
   message(FATAL_ERROR "Could not find glib headers")
-endif()
-
-if (NOT _LIB_GLIB)
-  message(FATAL_ERROR "Could not find glib")
 endif()
 
 if (NOT _LIB_GSTREAMER)
