@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>gst-rtsp-launch</name>
+  <version>0.0.0</version>
+  <description>launch local rtsp server, this is a mirror from https://github.com/sfalexrog/gst-rtsp-launch</description>
+  <maintainer email="amfernusus@gmail.com">Ilya Guterman</maintainer>
+  <license>private</license>
+
+  <build_depend>libgstrtspserver-1.0-dev</build_depend>
+  <build_depend>libglib2.0-dev</build_depend>
+  <build_depend>libgstreamer1.0-dev</build_depend>
+
+  <exec_depend>libgstrtspserver-1.0-0</exec_depend>
+  <exec_depend>libgstreamer1.0</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
